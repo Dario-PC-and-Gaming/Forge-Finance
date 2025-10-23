@@ -92,7 +92,7 @@ export async function getInvoiceMetadata(metadataUri: string): Promise<InvoiceMe
 export function createInvoiceMetadata(formData: Record<string, unknown>, businessAddress: string): InvoiceMetadata {
   return {
     name: `Invoice #${formData.invoiceNumber}`,
-    description: formData.description || `Invoice for ${formData.services}`,
+    description: (formData.description as string) || `Invoice for ${formData.services}`,
     image: "https://via.placeholder.com/400x300?text=Invoice+Document",
     external_url: `https://yourplatform.com/invoice/${formData.invoiceNumber}`,
     attributes: [
